@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Exemplo Ajax 1</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">         
+        <script type="text/javascript">
+            function loadXMLDoc() { //handler click
+                var xmlhttp;
+                if (window.XMLHttpRequest) {
+                    xmlhttp = new XMLHttpRequest(); //Objeto AJAX
+                } else {
+                    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP"); //Carrega Objeto AJAC para o IE
+                }
+                document.getElementById('test').innerHTML = "Carregando..."; //DOM HTML                
+                xmlhttp.open("GET", "ajax_info.txt", false);// Requisição GET, url para chamada, Assíncrono == false
+                alert(xmlhttp.responseText);
+                xmlhttp.send(null); // Realização da requisição. Null, pois não está enviando nenhum dado...
+                document.getElementById('test').innerHTML = xmlhttp.responseText; //DOM HTML
+            }
+        </script> 
+    </head>
+    <body>
+        <div id="test">Testando</div>
+        <button type="button" onclick="loadXMLDoc()">Muda o conteudo</button>
+    </body>
+</html>
